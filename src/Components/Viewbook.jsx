@@ -49,13 +49,11 @@ function Viewbook() {
     return (
         <>
             <div>
-                <div className='row'>
-                    <div className='col-2'>
+                
                         <Admin />
-                    </div>
+                    
 
-                    <div className='col-10 mt-3 p-2'>
-                        <div className='d-flex justify-content-center'>
+                        <div className='d-flex justify-content-center mt-2'>
                             <div className='border shadow' style={{width:'990px',height:'450px',overflowY:'scroll'}}>
                                 <h3 className='text-center'>View Book</h3>
                                 <table className='table table-striped table-bordered '>
@@ -68,6 +66,7 @@ function Viewbook() {
                                         <th>Category</th>
                                         <th>Number</th>
                                         <th>Cover</th>
+                                        <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -77,13 +76,13 @@ function Viewbook() {
                                             <td>{index+1}</td>
                                             <td>{item.title}</td>
                                             <td>{item.author}</td>
-                                            <td>{item.description}</td>
+                                            <td style={{fontSize:'15px'}}>{item.description}</td>
                                             <td>{item.category}</td>
                                             <td>{item.number}</td>
-                                            <td>{item.cover}</td>
+                                            <td style={{fontSize:'12px',fontFamily:'sans-serif'}}>{item.cover}</td>
                                             <td>
                                                <Editbook data={item}/>
-                                                <button className='btn btn-outline-danger btn-sm ms-2' onClick={()=>{deletebook(item._id)}}>Delete</button>
+                                                <button className='btn btn-danger btn-sm mt-2' onClick={()=>{deletebook(item._id)}}>Delete</button>
                                             </td>
                                         </tr>
                                             ))
@@ -97,9 +96,6 @@ function Viewbook() {
                         </div>
 
                     </div>
-
-                </div>
-            </div>
         </>
     )
 }

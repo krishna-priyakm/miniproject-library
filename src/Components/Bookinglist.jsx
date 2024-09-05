@@ -43,15 +43,12 @@ function Bookinglist() {
     return (
         <>
             <div>
-                <div className='row'>
-                    <div className='col-2'>
+                
                         <Admin />
 
-                    </div>
-
-                    <div className='col-10'>
+                 
                         <div className='d-flex justify-content-center'>
-                            <div className='border shadow mt-5' style={{ width: '1000px', height: '450px', overflowY: 'scroll' }}>
+                            <div className='border shadow mt-2' style={{ width: '900px', height: '450px', overflowY: 'scroll' }}>
                                 <h3 className='text-center'>Booking List</h3>
                                 <table className='table table-striped table-bordered'>
                                     <thead>
@@ -80,7 +77,7 @@ function Bookinglist() {
                                                     <td>
                                                         {
                                                              item.status=="Returned" ?
-                                                            <button className='btn btn-primary' onClick={()=>handleapprove(item._id)}>Approve</button>
+                                                            <button className='btn btn-primary btn-sm' onClick={()=>handleapprove(item._id)}>Approve</button>
                                                             :
                                                             <span></span>
                                                         }
@@ -98,8 +95,6 @@ function Bookinglist() {
 
                     </div>
 
-                </div>
-            </div>
         </>
     )
 }

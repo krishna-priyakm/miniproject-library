@@ -44,13 +44,12 @@ function Studentlist() {
     return (
         <>
             <div>
-                <div className='row'>
-                    <div className='col-2'>
+                
                         <Admin />
 
-                    </div>
+                   
 
-                    <div className='col-10 mt-3'>
+                   
                         <div className='d-flex justify-content-center'>
                             <div className='border shadow' style={{ width: '700px' }}>
                                 <h3 className='text-center'>Student List</h3>
@@ -90,8 +89,7 @@ function Studentlist() {
 
                     </div>
 
-                </div>
-            </div>
+            
         </>
     )
 }

@@ -68,7 +68,7 @@ function Editbook({ data }) {
 
   return (
     <>
-      <button className='btn btn-outline-warning btn-sm' onClick={handleShow}>
+      <button className='btn btn-warning btn-sm ' onClick={handleShow}>
         Edit
       </button>
 

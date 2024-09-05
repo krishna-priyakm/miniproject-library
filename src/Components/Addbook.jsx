@@ -13,7 +13,7 @@ function Addbook() {
 
     const [token, setToken] = useState()
 
-    const [preview,setPreview]=useState()
+    const [preview, setPreview] = useState()
 
     useEffect(() => {
         const excistingUser = JSON.parse(sessionStorage.getItem('currentUser'))
@@ -27,12 +27,12 @@ function Addbook() {
 
     }, [])
 
-    useEffect(()=>{
-        if(addbook.cover){
+    useEffect(() => {
+        if (addbook.cover) {
             setPreview(URL.createObjectURL(addbook.cover))
         }
-    },[addbook.cover])
-    
+    }, [addbook.cover])
+
     console.log(token)
 
     const handlesubmit = async () => {
@@ -47,16 +47,16 @@ function Addbook() {
             bookdata.append('category', addbook.category)
             bookdata.append('number', addbook.number)
             bookdata.append('cover', addbook.cover)
-            bookdata.append('adminid',addbook.adminid)
+            bookdata.append('adminid', addbook.adminid)
             const reqheader = {
                 'Content-Type': 'multipart/formdata',
                 'Authorization': `Bearer ${token}`
             }
             console.log(reqheader)
-            const data=await bookregApi(bookdata,reqheader)
+            const data = await bookregApi(bookdata, reqheader)
             console.log(data)
             toast.success("Book detailed added successfully")
-            
+
 
         }
 
@@ -67,40 +67,38 @@ function Addbook() {
     return (
         <>
             <div>
-                <div className='row'>
-                    <div className='col-3'>
-                        <Admin />
 
-                    </div>
-                    <div className='col-9 mt-3 p-2'>
+                <Admin />
 
-                        <div className='d-flex justify-content-center'>
-                            <div className='border shadow' style={{ width: '700px' }}>
-                                <h4 className='text-center'>Add Book</h4>
-                                <div className='row'>
-                                    <div className='col mt-5 mx-4'>
-                                        <label htmlFor="cover">
-                                            <input type="file" id='cover' name='cover' className='form-control' style={{ display: 'none' }} onChange={(e) => { setAddbook({ ...addbook, cover: e.target.files[0] }) }} />
-                                            <img src={preview?preview : cover} alt="" style={{ width: '250px' }} />
-                                        </label>
-                                    </div>
-                                    <div className='col'>
-                                        <input type="text" placeholder='Title' className='form-control' required onChange={(e) => { setAddbook({ ...addbook, title: e.target.value }) }} /><br />
-                                        <input type="text" placeholder='Author' className='form-control' required onChange={(e) => { setAddbook({ ...addbook, author: e.target.value }) }} /><br />
-                                        <input type="text" placeholder='Description' className='form-control' required onChange={(e) => { setAddbook({ ...addbook, description: e.target.value }) }} /><br />
-                                        <input type="text" placeholder='Category' className='form-control' required onChange={(e) => { setAddbook({ ...addbook, category: e.target.value }) }} /><br />
-                                        <input type="text" placeholder='Number' className='form-control' required onChange={(e) => { setAddbook({ ...addbook, number: e.target.value }) }} /><br />
-                                        <button className='btn btn-outline-success' onClick={handlesubmit} >Submit</button>
-                                    </div>
 
-                                </div>
 
+                <div className='d-flex justify-content-center'>
+                    <div className='border shadow' style={{ width: '700px' }}>
+                        <h4 className='text-center'>Add Book</h4>
+                        <div className='row'>
+                            <div className='col mt-5 mx-4'>
+                                <label htmlFor="cover">
+                                    <input type="file" id='cover' name='cover' className='form-control' style={{ display: 'none' }} onChange={(e) => { setAddbook({ ...addbook, cover: e.target.files[0] }) }} />
+                                    <img src={preview ? preview : cover} alt="" className='d-none d-sm-block' style={{ width: '250px' }} />
+                                    <img src={preview ? preview : cover} alt="" className='d-block d-sm-none' style={{ width: '150px' }} />
+                                </label>
                             </div>
-                        </div>
-                    </div>
+                            <div className='col'>
+                                <input type="text" placeholder='Title' className='form-control' required onChange={(e) => { setAddbook({ ...addbook, title: e.target.value }) }} /><br />
+                                <input type="text" placeholder='Author' className='form-control' required onChange={(e) => { setAddbook({ ...addbook, author: e.target.value }) }} /><br />
+                                <input type="text" placeholder='Description' className='form-control' required onChange={(e) => { setAddbook({ ...addbook, description: e.target.value }) }} /><br />
+                                <input type="text" placeholder='Category' className='form-control' required onChange={(e) => { setAddbook({ ...addbook, category: e.target.value }) }} /><br />
+                                <input type="text" placeholder='Number' className='form-control' required onChange={(e) => { setAddbook({ ...addbook, number: e.target.value }) }} /><br />
+                                <button className='btn btn-outline-success ms-5 mb-2 ' onClick={handlesubmit} >Submit</button>
+                            </div>
 
+                        </div>
+
+                    </div>
                 </div>
             </div>
+
+
         </>
     )
 }
